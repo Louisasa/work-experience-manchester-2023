@@ -1,0 +1,41 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    display: block;
+    height: 601px;
+    width: 601px;
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.game {
+    display: flex;
+}
+
+.mancala-game-type {
+    height: 100px;
+    text-align: center;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.score {
+    border: 1px black solid;
+    height: 110px;
+    width: 50px;
+    margin: 15px;
+}
+
+.house {
+    border: 1px black solid;
+    height: 40px;
+    width: 40px;
+    margin: 15px;
+}
