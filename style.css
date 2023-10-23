@@ -17,8 +17,12 @@ html, body {
 }
 
 .mancala-game-type {
-    height: 100px;
+    height: 130px;
     text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    
+
 }
 
 .col {
@@ -27,15 +31,17 @@ html, body {
 }
 
 .score {
-    border: 1px black solid;
+    border: 3px black solid;
     height: 110px;
     width: 45px;
     margin: 10px;
 }
 
 .house {
-    border: 1px black solid;
+    border: 3px black solid;
     height: 40px;    
     margin: 10px;
     width: 50px;
+    
+    color: blue;
 }
