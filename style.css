@@ -16,6 +16,10 @@ html, body {
     display: flex;
 }
 
+.main-game {
+    text-align: center;
+}
+
 .mancala-game-type {
     height: 140px;
     text-align: center;
