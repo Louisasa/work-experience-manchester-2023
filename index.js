@@ -1,5 +1,35 @@
 var version = "Oware";
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
+
+var HasGameStarted = false; 
+var GameStateButtonText = 'Start Game';
+document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
+
+function startGame() {
+    if (HasGameStarted){
+        HasGameStarted = false;
+    } else {
+        HasGameStarted = true;
+    }
+} 
+
+
+function updateGameStateButtonText() {
+    if (HasGameStarted){
+        GameStateButtonText = "Restart Game";
+    } else {
+        GameStateButtonText = "Start Game";
+    }
+    document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
+}
+
+function change_game_state(){
+    startGame();
+    updateGameStateButtonText();
+}
+
+document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
+
 var turnPlayerOne =true;
 
 var p1h6 = "4";
