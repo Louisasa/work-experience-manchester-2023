@@ -1,6 +1,6 @@
 var version = "Oware";
-
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
+var turnPlayerOne =true;
 
 var p1h6 = "4";
 document.getElementsByClassName("player-1-house-6 seeds")[0].innerHTML = p1h6;
@@ -43,3 +43,15 @@ document.getElementsByClassName("player-1 score")[0].innerHTML = p1score;
 
 var p2score = "0";
 document.getElementsByClassName("player-2 score")[0].innerHTML = p2score;
+
+function PlayerTurn() {
+if (turnPlayerOne) {
+    document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 1's Turn!"
+    turnPlayerOne =false;
+}
+else {
+    document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 2's Turn!"
+    turnPlayerOne =true;
+}
+}
+PlayerTurn();
