@@ -5,9 +5,9 @@ html, body {
 
 .background {
     display: block;
-    height: 601px;
+    height: 380px;
     width: 601px;
-    background: #eee;
+    background: #9e7d5c;
     display: flex;
     flex-direction: column;
 }
@@ -29,13 +29,13 @@ html, body {
 .score {
     border: 1px black solid;
     height: 110px;
-    width: 50px;
-    margin: 15px;
+    width: 45px;
+    margin: 10px;
 }
 
 .house {
     border: 1px black solid;
-    height: 40px;
-    width: 40px;
-    margin: 15px;
+    height: 40px;    
+    margin: 10px;
+    width: 50px;
 }
