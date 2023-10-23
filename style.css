@@ -21,6 +21,10 @@ html, body {
     text-align: center;
 }
 
+.main-game {
+    text-align: center;
+}
+
 .col {
     display: flex;
     flex-direction: column;
