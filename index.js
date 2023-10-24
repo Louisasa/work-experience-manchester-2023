@@ -63,13 +63,15 @@ function showWinner() {
 }
 
 function Turn(player, playersHouseClicked) {
-    if (playersTurn == player) {
-        document.getElementsByClassName("messages")[0].innerHTML = pickAHouseText;
+    var seedCheck = parseInt(document.getElementsByClassName(`player-${player}-house-${playersHouseClicked} seeds`)[0].innerHTML);
+    if (playersTurn == player && seedCheck > 0) {
         makeAMove(player, playersHouseClicked);
+        document.getElementsByClassName("messages")[0].innerHTML = pickAHouseText;
     }
     else {
         document.getElementsByClassName("messages")[0].innerHTML = invalidTurnText;
     }
+
 }
 
 function PlayerTurn() {
@@ -85,7 +87,7 @@ function PlayerTurn() {
 
 function makeAMove(playerNumber, houseNumber) {
     // Figure out how many seeds are in the house
-    var numberOfSeeds = document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML;
+    var numberOfSeeds = parseInt(document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML);
 
     // Empty this house
     var amountleft = 0;
