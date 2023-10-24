@@ -77,5 +77,5 @@ function makeAMove(playerNumber, houseNumber) {
         document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = parseInt(seedsMoved)+1;
         houseIndex++;
     }
-
+    PlayerTurn();
 }
