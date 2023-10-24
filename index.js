@@ -124,3 +124,10 @@ function Endgame() {
         showWinner();
     }
 }
+// numberOfSeeds is number of seeds to update a players score
+// player is the player number who's score is updating
+function capture(numberOfSeeds,player){
+    document.getElementsByClassName(`player-${player} score`)[0].innerHTML = parseInt(seedsMoved)+numberOfSeeds;
+}
+
+
