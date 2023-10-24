@@ -94,12 +94,12 @@ function makeAMove(playerNumber, houseNumber) {
     var houseIndex = houseNumber+1;
     var playerNumberToUpdate = playerNumber;
 
-    // Add seeds clockwise
+    // Add seeds anti-clockwise
     for(var index = 0; index < numberOfSeeds; index++ ) {
         if (houseIndex > 6) {
             houseIndex = 1;
             if (playerNumberToUpdate===1){
-                playerNumberToUpdate=2
+                playerNumberToUpdate=2 
 
             } else{
                 playerNumberToUpdate =1
@@ -110,4 +110,13 @@ function makeAMove(playerNumber, houseNumber) {
         houseIndex++;
     }
     PlayerTurn();
+}
+capture(); 
+
+// numberOfSeeds is number of seeds to update a players score
+// player is the player number who's score is updating
+function capture(numberOfSeeds,player){
+    if (numberOfSeeds == 0){
+        console.log('')
+    }
 }
