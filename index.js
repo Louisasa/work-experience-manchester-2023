@@ -1,4 +1,6 @@
-var version = "Oware";
+import { makeAMove as OwareMakeAMove, versionName as OwareVersionName } from "./module/oware.js";
+
+var version = OwareVersionName;
 var HasGameStarted = false; 
 var GameStateButtonText = 'Start Game';
 var initialHouseNumber = "4";
@@ -10,6 +12,7 @@ var pickAHouseText = "Pick a house:";
 
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
+document.getElementsByClassName("game-state")[0].onclick = startGame;
 
 function startGame() {
     if (HasGameStarted){
@@ -87,32 +90,8 @@ function changePlayer() {
 }
 
 function makeAMove(playerNumber, houseNumber) {
-    // Figure out how many seeds are in the house
-    var numberOfSeeds = document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML;
-
-    // Empty this house
-    var amountleft = 0;
-    document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML = amountleft
-
-    var houseIndex = houseNumber+1;
-    var playerNumberToUpdate = playerNumber;
-
-    // Add seeds anti-clockwise
-    for(var index = 0; index < numberOfSeeds; index++ ) {
-        if (houseIndex > 6) {
-            houseIndex = 1;
-            if (playerNumberToUpdate===1){
-                playerNumberToUpdate = 2;
-            } else{
-                playerNumberToUpdate = 1;
-            } 
-        }
-        var seedsMoved=document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML;
-        document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = parseInt(seedsMoved)+1;
-        houseIndex++;
-    }
-    capture_till(houseIndex-1, playerNumberToUpdate);
-    changePlayer();
+    OwareMakeAMove(playerNumber, houseNumber);
+    PlayerTurn();
 }
 
 function checkForEndgame() {

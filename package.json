@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "npx": "^10.2.2"
+  },
+  "type": "module",
+  "exports": {
+    "./module/*": "./module/*.js"
   }
 }
