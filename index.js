@@ -4,6 +4,7 @@ var GameStateButtonText = 'Start Game';
 var initialHouseNumber = "4";
 var initialScoreNumber = "0";
 var turnPlayerOne = true;
+var winner = "Winner!";
 
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
@@ -38,6 +39,10 @@ function setupGame() {
     
     document.getElementsByClassName("player-1 score")[0].innerHTML = initialScoreNumber;
     document.getElementsByClassName("player-2 score")[0].innerHTML = initialScoreNumber;
+}
+
+function showWinner() {
+    document.getElementsByClassName("winner")[0].innerHTML = winner;
 }
 
 function PlayerTurn() {
