@@ -14,18 +14,24 @@ html, body {
 
 .game {
     display: flex;
+    justify-content: center;
 }
 
 .main-game {
     text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .mancala-game-type {
-    height: 140px;
+    height: 120px;
     text-align: center;
     font-size: 35px;
     font-style: normal;
     display: flex;
+    justify-content: center;
 }
 
 .messages {
@@ -49,6 +55,7 @@ html, body {
     height: 40px;    
     margin: 1px;
     width: 50px;
+    border-radius: 6px;
 }
 
 .upper-house {
@@ -74,4 +81,25 @@ html, body {
     text-shadow: 3px 3px green;
     font-size: 50px;
     font-family: fantasy;
+}
+
+.game-state {
+    display: flex;
+    width: 120px;
+    justify-content: center;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 12px;
+    height: 60px;
+    font-size: 25px ;
+    
+}
+
+.button-container{
+    justify-content: center;
+    margin-left: 40%;
+}
+
+.right-score, .left-score{
+    border-radius: 6px;
 }
