@@ -117,6 +117,13 @@ capture();
 // player is the player number who's score is updating
 function capture(numberOfSeeds,player){
     if (numberOfSeeds == 0){
-        console.log('')
+        document.getElementsByClassName("capture")[0].innerHTML = `${player} captured`
+        
+        return true
     }
+    return false
+}
+
+if (capture(numberOfSeeds,playerNumber)){
+
 }
