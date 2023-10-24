@@ -63,3 +63,11 @@ html, body {
 .left-score {
     border-color:blue;
 }
+
+.winner {
+    text-align: center;
+    color: yellowgreen;
+    text-shadow: 3px 3px green;
+    font-size: 50px;
+    font-family: fantasy;
+}
