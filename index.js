@@ -111,3 +111,18 @@ function makeAMove(playerNumber, houseNumber) {
     }
     PlayerTurn();
 }
+    
+function Endgame() {
+    if (p1score >= "24"){
+    HasGameStarted = false;
+    GameStateButtonText = "Restart game"
+    }else if(p2score >= "24"){
+        HasGameStarted = false;
+        GameStateButtonText = "Restart game"
+    }
+}
+function Draw() {
+    if (p1score==="24" && p2score==="24")
+    HasGameStarted = false;
+    GameStateButtonText = "Restart game"
+}
