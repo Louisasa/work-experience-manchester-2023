@@ -118,7 +118,7 @@ function makeAMove(playerNumber, houseNumber) {
 function checkForEndgame() {
     var p1score = document.getElementsByClassName('player-1 score')[0].innerHTML;
     var p2score = document.getElementsByClassName('player-2 score')[0].innerHTML;
-    if (p1score >= "24" || p2score >= "24" || (p1score ==="24" && p2score ==="24")) {
+    if (p1score > "24" || p2score > "24" || (p1score ==="24" && p2score ==="24")) {
         HasGameStarted = false;
         GameStateButtonText = "Restart game";
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
