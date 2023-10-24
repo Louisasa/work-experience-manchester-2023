@@ -3,8 +3,10 @@ var HasGameStarted = false;
 var GameStateButtonText = 'Start Game';
 var initialHouseNumber = "4";
 var initialScoreNumber = "0";
-var turnPlayerOne = true;
-var winner = "Winner!";
+var playersTurn = 1;
+var winnerText = "Winner!";
+var invalidTurnText = "Invalid Turn! Try a different house.";
+var pickAHouseText = "Pick a house:";
 
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
@@ -39,20 +41,46 @@ function setupGame() {
     
     document.getElementsByClassName("player-1 score")[0].innerHTML = initialScoreNumber;
     document.getElementsByClassName("player-2 score")[0].innerHTML = initialScoreNumber;
+
+    
+    document.getElementById("p1h1").onclick=function() {Turn(1, 1)};
+    document.getElementById("p1h2").onclick=function() {Turn(1, 2)};
+    document.getElementById("p1h3").onclick=function() {Turn(1, 3)};
+    document.getElementById("p1h4").onclick=function() {Turn(1, 4)};
+    document.getElementById("p1h5").onclick=function() {Turn(1, 5)};
+    document.getElementById("p1h6").onclick=function() {Turn(1, 6)};
+    document.getElementById("p2h1").onclick=function() {Turn(2, 1)};
+    document.getElementById("p2h2").onclick=function() {Turn(2, 2)};
+    document.getElementById("p2h3").onclick=function() {Turn(2, 3)};
+    document.getElementById("p2h4").onclick=function() {Turn(2, 4)};
+    document.getElementById("p2h5").onclick=function() {Turn(2, 5)};
+    document.getElementById("p2h6").onclick=function() {Turn(2, 6)};
+    document.getElementsByClassName("messages")[0].innerHTML = pickAHouseText;
 }
 
 function showWinner() {
-    document.getElementsByClassName("winner")[0].innerHTML = winner;
+    document.getElementsByClassName("winner")[0].innerHTML = winnerText;
+}
+
+function Turn(player, playersHouseClicked) {
+    if (playersTurn == player) {
+        document.getElementsByClassName("messages")[0].innerHTML = pickAHouseText;
+        makeAMove(player, playersHouseClicked);
+    }
+    else {
+        console.log("oops");
+        document.getElementsByClassName("messages")[0].innerHTML = invalidTurnText;
+    }
 }
 
 function PlayerTurn() {
-    if (turnPlayerOne) {
+    if (playersTurn == 1) {
         document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 1's Turn!"
-        turnPlayerOne =false;
+        playersTurn = 2;
     }
     else {
         document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 2's Turn!"
-        turnPlayerOne =true;
+        playersTurn = 1;
     }
 }
 
