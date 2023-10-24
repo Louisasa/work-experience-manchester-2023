@@ -21,7 +21,6 @@ function startGame() {
     }
     document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
     setupGame();
-    PlayerTurn();
 } 
 
 function setupGame() {
@@ -43,26 +42,28 @@ function setupGame() {
     document.getElementsByClassName("player-2 score")[0].innerHTML = initialScoreNumber;
 
     
-    document.getElementById("p1h1").onclick=function() {Turn(1, 1)};
-    document.getElementById("p1h2").onclick=function() {Turn(1, 2)};
-    document.getElementById("p1h3").onclick=function() {Turn(1, 3)};
-    document.getElementById("p1h4").onclick=function() {Turn(1, 4)};
-    document.getElementById("p1h5").onclick=function() {Turn(1, 5)};
-    document.getElementById("p1h6").onclick=function() {Turn(1, 6)};
-    document.getElementById("p2h1").onclick=function() {Turn(2, 1)};
-    document.getElementById("p2h2").onclick=function() {Turn(2, 2)};
-    document.getElementById("p2h3").onclick=function() {Turn(2, 3)};
-    document.getElementById("p2h4").onclick=function() {Turn(2, 4)};
-    document.getElementById("p2h5").onclick=function() {Turn(2, 5)};
-    document.getElementById("p2h6").onclick=function() {Turn(2, 6)};
+    document.getElementById("p1h1").onclick=function() {onHouseClick(1, 1)};
+    document.getElementById("p1h2").onclick=function() {onHouseClick(1, 2)};
+    document.getElementById("p1h3").onclick=function() {onHouseClick(1, 3)};
+    document.getElementById("p1h4").onclick=function() {onHouseClick(1, 4)};
+    document.getElementById("p1h5").onclick=function() {onHouseClick(1, 5)};
+    document.getElementById("p1h6").onclick=function() {onHouseClick(1, 6)};
+    document.getElementById("p2h1").onclick=function() {onHouseClick(2, 1)};
+    document.getElementById("p2h2").onclick=function() {onHouseClick(2, 2)};
+    document.getElementById("p2h3").onclick=function() {onHouseClick(2, 3)};
+    document.getElementById("p2h4").onclick=function() {onHouseClick(2, 4)};
+    document.getElementById("p2h5").onclick=function() {onHouseClick(2, 5)};
+    document.getElementById("p2h6").onclick=function() {onHouseClick(2, 6)};
     document.getElementsByClassName("messages")[0].innerHTML = pickAHouseText;
+    
+    document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 1's Turn!";
 }
 
 function showWinner() {
     document.getElementsByClassName("winner")[0].innerHTML = winnerText;
 }
 
-function Turn(player, playersHouseClicked) {
+function onHouseClick(player, playersHouseClicked) {
     var seedCheck = parseInt(document.getElementsByClassName(`player-${player}-house-${playersHouseClicked} seeds`)[0].innerHTML);
     if (playersTurn == player && seedCheck > 0) {
         makeAMove(player, playersHouseClicked);
@@ -71,16 +72,16 @@ function Turn(player, playersHouseClicked) {
     else {
         document.getElementsByClassName("messages")[0].innerHTML = invalidTurnText;
     }
-
+    checkForEndgame();
 }
 
-function PlayerTurn() {
+function changePlayer() {
     if (playersTurn == 1) {
-        document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 1's Turn!"
+        document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 1's Turn!";
         playersTurn = 2;
     }
     else {
-        document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 2's Turn!"
+        document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 2's Turn!";
         playersTurn = 1;
     }
 }
@@ -111,23 +112,24 @@ function makeAMove(playerNumber, houseNumber) {
         document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = parseInt(seedsMoved)+1;
         houseIndex++;
     }
-    PlayerTurn();
+    changePlayer();
 }
 
-function Endgame() {
+function checkForEndgame() {
     var p1score = document.getElementsByClassName('player-1 score')[0].innerHTML;
     var p2score = document.getElementsByClassName('player-2 score')[0].innerHTML;
     if (p1score >= "24" || p2score >= "24" || (p1score ==="24" && p2score ==="24")) {
         HasGameStarted = false;
         GameStateButtonText = "Restart game";
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
+        document.getElementsByClassName("messages")[0].innerHTML = "";
+        document.getElementsByClassName("main-game")[0].innerHTML = "";
         showWinner();
     }
 }
-// numberOfSeeds is number of seeds to update a players score
-// player is the player number who's score is updating
-function capture(numberOfSeeds,player){
-    document.getElementsByClassName(`player-${player} score`)[0].innerHTML = parseInt(seedsMoved)+numberOfSeeds;
-}
 
+function capture(numberOfSeeds, player){
+    var currentScore = document.getElementsByClassName(`player-${player} score`)[0].innerHTML
+    document.getElementsByClassName(`player-${player} score`)[0].innerHTML = parseInt(currentScore)+numberOfSeeds;
+}
 
