@@ -111,19 +111,3 @@ function makeAMove(playerNumber, houseNumber) {
     }
     PlayerTurn();
 }
-capture(); 
-
-// numberOfSeeds is number of seeds to update a players score
-// player is the player number who's score is updating
-function capture(numberOfSeeds,player){
-    if (numberOfSeeds == 0){
-        document.getElementsByClassName("capture")[0].innerHTML = `${player} captured`
-        
-        return true
-    }
-    return false
-}
-
-if (capture(numberOfSeeds,playerNumber)){
-
-}
