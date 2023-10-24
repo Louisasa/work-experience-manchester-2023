@@ -99,15 +99,26 @@ function makeAMove(playerNumber, houseNumber) {
         if (houseIndex > 6) {
             houseIndex = 1;
             if (playerNumberToUpdate===1){
-                playerNumberToUpdate=2 
+                playerNumberToUpdate = 2;
 
             } else{
-                playerNumberToUpdate =1
+                playerNumberToUpdate = 1;
             } 
         }
-        var seedsMoved=document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML;
+        var seedsMoved = document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML;
         document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = parseInt(seedsMoved)+1;
         houseIndex++;
     }
     PlayerTurn();
+}
+
+function Endgame() {
+    var p1score = document.getElementsByClassName('player-1 score')[0].innerHTML;
+    var p2score = document.getElementsByClassName('player-2 score')[0].innerHTML;
+    if (p1score >= "24" || p2score >= "24" || (p1score ==="24" && p2score ==="24")) {
+        HasGameStarted = false;
+        GameStateButtonText = "Restart game";
+        document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
+        showWinner();
+    }
 }
