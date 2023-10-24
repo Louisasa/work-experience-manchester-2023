@@ -68,7 +68,6 @@ function Turn(player, playersHouseClicked) {
         makeAMove(player, playersHouseClicked);
     }
     else {
-        console.log("oops");
         document.getElementsByClassName("messages")[0].innerHTML = invalidTurnText;
     }
 }
