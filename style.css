@@ -36,7 +36,7 @@ html, body {
     justify-content: center;
 }
 
-.messages {
+.messages, .Clock, .alerts, .GameUpdates{
     text-align: center;
 }
 
@@ -48,8 +48,58 @@ html, body {
 .score {
     border: 3px black solid;
     height: 110px;
-    width: 45px;
-    margin: 10px;
+    width: 50px;
+    margin: 15px;
+    border-radius: 6px;
+}
+
+.upper-house {
+    margin-top: 20px;
+    border-color: blue;
+}
+
+.lower-house {
+    border-color:firebrick;
+}
+
+.right-score {
+    border-color:firebrick;
+}
+
+.left-score {
+    border-color:blue;
+}
+
+.winner {
+    text-align: center;
+    color: yellowgreen;
+    text-shadow: 3px 3px green;
+    font-size: 50px;
+    font-family: fantasy;
+}
+
+.game-state {
+    display: flex;
+    width: 120px;
+    justify-content: center;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 12px;
+    height: 60px;
+    font-size: 25px ;
+    
+}
+
+.TimerState {
+    background-color: rgb(45, 126, 5);
+    border-radius: 12px;
+    height: 30px; 
+    width: 60px;
+}
+
+.button-container{
+    justify-content: center;
+    margin-left: 40%;
 }
 
 .upper-house, .lower-house {
