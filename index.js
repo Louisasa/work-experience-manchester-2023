@@ -111,13 +111,14 @@ function makeAMove(playerNumber, houseNumber) {
         document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = parseInt(seedsMoved)+1;
         houseIndex++;
     }
+    capture_till(houseIndex-1, playerNumberToUpdate);
     changePlayer();
 }
 
 function checkForEndgame() {
-    var p1score = document.getElementsByClassName('player-1 score')[0].innerHTML;
-    var p2score = document.getElementsByClassName('player-2 score')[0].innerHTML;
-    if (p1score > "24" || p2score > "24" || (p1score ==="24" && p2score ==="24")) {
+    var p1score = parseInt(document.getElementsByClassName('player-1 score')[0].innerHTML);
+    var p2score = parseInt(document.getElementsByClassName('player-2 score')[0].innerHTML);
+    if (p1score > 24 || p2score > 24 || (p1score ===24 && p2score ===24)) {
         HasGameStarted = false;
         GameStateButtonText = "Restart game";
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
@@ -128,19 +129,19 @@ function checkForEndgame() {
 }
 
 function capture(numberOfSeeds, player){
-    var currentScore = document.getElementsByClassName(`player-${player} score`)[0].innerHTML
-    document.getElementsByClassName(`player-${player} score`)[0].innerHTML = parseInt(currentScore)+numberOfSeeds;
+    var currentScore = parseInt(document.getElementsByClassName(`player-${player} score`)[0].innerHTML);
+    document.getElementsByClassName(`player-${player} score`)[0].innerHTML = currentScore+numberOfSeeds;
 }
 
 function capture_till(StartHouse, player){
     var CurrentHouse = StartHouse;
-    var CurrentHouse_Seed_Count = document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML;
+    var CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
     while ((CurrentHouse_Seed_Count == 2 || CurrentHouse_Seed_Count == 3) && CurrentHouse > 0){
         document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML = 0;
         // capture the seeds
         capture(CurrentHouse_Seed_Count,player);
         // change current house to the previous house in order of sowing seeds
         CurrentHouse-= 1;
-        CurrentHouse_Seed_Count = document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML;
+        CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
     }
 }
