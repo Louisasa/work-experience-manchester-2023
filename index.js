@@ -1,7 +1,6 @@
 import { makeAMove as OwareMakeAMove, versionName as OwareVersionName } from "./module/oware.js";
 
 var version = OwareVersionName;
-var HasGameStarted = false; 
 var GameStateButtonText = 'Start Game';
 var GameAIbuttontext = 'Play Multiplayer';
 var initialHouseNumber = "4";
@@ -11,13 +10,14 @@ var winnerText = "Winner!";
 var invalidTurnText = "Invalid Turn! Try a different house.";
 var pickAHouseText = "Pick a house:";
 var isAIPlayer = true;
+var isFirstGame = true;
 var sec = 30;
 var ChangeGo=false;
 var TimeRanOut = false;
 var Started=false;
-var TimerSelection=false
-var TimerIsOn = false
-var LastChoice = "option2"
+var TimerSelection=false;
+var TimerIsOn = false;
+var LastChoice = "option2";
 
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
@@ -26,14 +26,11 @@ document.getElementsByClassName("game-state")[0].onclick = startGame;
 document.getElementsByClassName("automation")[0].onclick = AI;
 
 function startGame() {
-    if (HasGameStarted){
-        HasGameStarted = false;
+    if (isFirstGame){
+        isFirstGame = false;
         GameStateButtonText = "Restart Game";
-    } else {
-        HasGameStarted = true;
-        GameStateButtonText = "Start Game";
+        document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
     }
-    document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
     setupGame();
 } 
 
@@ -146,8 +143,8 @@ function checkForEndgame() {
     var p1score = parseInt(document.getElementsByClassName('player-1-score')[0].innerHTML);
     var p2score = parseInt(document.getElementsByClassName('player-2-score')[0].innerHTML);
     if (p1score > 24 || p2score > 24 || (p1score ===24 && p2score ===24)) {
-        HasGameStarted = false;
-        GameStateButtonText = "Restart game";
+        isFirstGame = false;
+        GameStateButtonText = "New game";
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
         document.getElementsByClassName("messages")[0].innerHTML = "";
         document.getElementsByClassName("main-game")[0].innerHTML = "";
@@ -211,7 +208,6 @@ document.getElementById("TimerSelect").onchange = function() {
     TimerSelection = this.value;
     if (TimerSelection == "option2"){
         TimerIsOn=true;
-        console.log("works");
         if (TimerSelection != LastChoice && Started){
             document.getElementsByClassName("GameUpdates").innerHTML='Press to apply new changes!';
         }
