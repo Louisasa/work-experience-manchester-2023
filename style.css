@@ -5,9 +5,9 @@ html, body {
 
 .background {
     display: block;
-    height: 601px;
+    height: 380px;
     width: 601px;
-    background: #eee;
+    background: #9e7d5c;
     display: flex;
     flex-direction: column;
 }
@@ -16,8 +16,7 @@ html, body {
     display: flex;
 }
 
-.mancala-game-type {
-    height: 100px;
+.Clock{
     text-align: center;
 }
 
@@ -25,7 +24,19 @@ html, body {
     text-align: center;
 }
 
+.mancala-game-type {
+    height: 140px;
+    text-align: center;
+    font-size: 35px;
+    font-style: normal;
+    display: flex;
+}
+
 .messages {
+    text-align: center;
+}
+
+.alerts {
     text-align: center;
 }
 
@@ -35,15 +46,40 @@ html, body {
 }
 
 .score {
-    border: 1px black solid;
+    border: 3px black solid;
     height: 110px;
-    width: 50px;
-    margin: 15px;
+    width: 45px;
+    margin: 10px;
 }
 
-.house {
-    border: 1px black solid;
-    height: 40px;
-    width: 40px;
-    margin: 15px;
+.upper-house, .lower-house {
+    border: 3px black solid;
+    height: 40px;    
+    margin: 1px;
+    width: 50px;
+}
+
+.upper-house {
+    margin-top: 20px;
+    border-color: blue;
+}
+
+.lower-house {
+    border-color:firebrick;
+}
+
+.right-score {
+    border-color:firebrick;
+}
+
+.left-score {
+    border-color:blue;
+}
+
+.winner {
+    text-align: center;
+    color: yellowgreen;
+    text-shadow: 3px 3px green;
+    font-size: 50px;
+    font-family: fantasy;
 }
