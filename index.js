@@ -9,18 +9,14 @@ var playersTurn = 1;
 var winnerText = "Winner!";
 var invalidTurnText = "Invalid Turn! Try a different house.";
 var pickAHouseText = "Pick a house:";
-<<<<<<< HEAD
-var isAIPlayer = true;
 var isFirstGame = true;
 var sec = 30;
 var ChangeGo=false;
 var TimeRanOut = false;
 var Started=false;
 var TimerIsOn = false;
-=======
 var isAIPlayer = false;
 var houselist = [1,2,3,4,5,6];
->>>>>>> bac2ae0 (created a function for the AI to make a random move)
 
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
