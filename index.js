@@ -1,4 +1,5 @@
 import { makeAMove as OwareMakeAMove, versionName as OwareVersionName } from "./module/oware.js";
+import { setnumberofseeds } from "./module/updateSeedsStyling.js";
 
 var version = OwareVersionName;
 var HasGameStarted = false; 
@@ -27,6 +28,20 @@ function startGame() {
 } 
 
 function setupGame() {
+    setnumberofseeds(4, 1, 1)
+    setnumberofseeds(4, 2, 1)
+    setnumberofseeds(4, 3, 1)
+    setnumberofseeds(4, 4, 1)
+    setnumberofseeds(4, 5, 1)
+    setnumberofseeds(4, 6, 1)
+    setnumberofseeds(4, 1, 2)
+    setnumberofseeds(4, 2, 2)
+    setnumberofseeds(4, 3, 2)
+    setnumberofseeds(4, 4, 2)
+    setnumberofseeds(4, 5, 2)
+    setnumberofseeds(4, 6, 2)
+
+
     document.getElementsByClassName("player-1-house-1 seeds")[0].innerHTML = initialHouseNumber;
     document.getElementsByClassName("player-1-house-2 seeds")[0].innerHTML = initialHouseNumber;
     document.getElementsByClassName("player-1-house-3 seeds")[0].innerHTML = initialHouseNumber;
@@ -91,6 +106,8 @@ function changePlayer() {
 
 function makeAMove(playerNumber, houseNumber) {
     OwareMakeAMove(playerNumber, houseNumber);
+    setnumberofseeds(numberOfSeeds, 1, 1)
+
     PlayerTurn();
 }
 
@@ -124,3 +141,8 @@ function capture_till(StartHouse, player){
         CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
     }
 }
+
+
+
+
+

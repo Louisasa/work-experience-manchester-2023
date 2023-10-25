@@ -1,3 +1,5 @@
+import { setnumberofseeds } from "./updateSeedsStyling";
+
 export var versionName = "Oware";
 
 export function makeAMove(playerNumber, houseNumber) {
@@ -24,6 +26,8 @@ export function makeAMove(playerNumber, houseNumber) {
         }
         var seedsMoved = document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML;
         document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = parseInt(seedsMoved)+1;
+        setnumberofseeds(seedsMoved+1, houseIndex, playerNumberToUpdate)
         houseIndex++;
+
     }
 }
