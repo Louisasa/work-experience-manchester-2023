@@ -85,7 +85,7 @@ html, body {
     font-family: fantasy;
 }
 
-.game-state {
+.game-state, .automation {
     display: flex;
     width: 120px;
     justify-content: center;
@@ -95,6 +95,10 @@ html, body {
     height: 60px;
     font-size: 25px ;
     
+}
+
+.automation {
+    font-size: 20px;
 }
 
 .button-container{
