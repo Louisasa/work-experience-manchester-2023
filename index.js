@@ -1,8 +1,5 @@
 var version = "Oware";
-<<<<<<< Updated upstream
-
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
-=======
 var HasGameStarted = false; 
 var GameStateButtonText = 'Start Game';
 var initialHouseNumber = "4";
@@ -253,4 +250,3 @@ document.getElementById("TimerSelect").onchange = function() {
 
     }
 }
->>>>>>> Stashed changes
