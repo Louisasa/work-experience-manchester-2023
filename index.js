@@ -3,7 +3,6 @@ import { versionName as KalahVersionName } from "./module/kalah.js";
 
 var version = OwareVersionName;
 var GameStateButtonText = 'Start Game';
-var GameAIbuttontext = 'Play Multiplayer';
 var initialHouseNumber = "4";
 var initialScoreNumber = "0";
 var playersTurn = 1;
