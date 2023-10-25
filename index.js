@@ -88,7 +88,7 @@ function changePlayer() {
 
 function makeAMove(playerNumber, houseNumber) {
     // Figure out how many seeds are in the house
-    var numberOfSeeds = parseInt(document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML);
+    var numberOfSeeds = document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML;
 
     // Empty this house
     var amountleft = 0;
@@ -103,12 +103,11 @@ function makeAMove(playerNumber, houseNumber) {
             houseIndex = 1;
             if (playerNumberToUpdate===1){
                 playerNumberToUpdate = 2;
-
             } else{
                 playerNumberToUpdate = 1;
             } 
         }
-        var seedsMoved = document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML;
+        var seedsMoved=document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML;
         document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = parseInt(seedsMoved)+1;
         houseIndex++;
     }
@@ -133,3 +132,15 @@ function capture(numberOfSeeds, player){
     document.getElementsByClassName(`player-${player} score`)[0].innerHTML = parseInt(currentScore)+numberOfSeeds;
 }
 
+function capture_till(StartHouse, player){
+    var CurrentHouse = StartHouse;
+    var CurrentHouse_Seed_Count = document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML;
+    while ((CurrentHouse_Seed_Count == 2 || CurrentHouse_Seed_Count == 3) && CurrentHouse > 0){
+        document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML = 0;
+        // capture the seeds
+        capture(CurrentHouse_Seed_Count,player);
+        // change current house to the previous house in order of sowing seeds
+        CurrentHouse-= 1;
+        CurrentHouse_Seed_Count = document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML;
+    }
+}
