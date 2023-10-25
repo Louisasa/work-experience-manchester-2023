@@ -36,7 +36,7 @@ html, body {
     justify-content: center;
 }
 
-.messages {
+.messages, .Clock, .alerts, .GameUpdates{
     text-align: center;
 }
 
@@ -48,15 +48,8 @@ html, body {
 .score {
     border: 3px black solid;
     height: 110px;
-    width: 45px;
-    margin: 10px;
-}
-
-.upper-house, .lower-house {
-    border: 3px black solid;
-    height: 40px;    
-    margin: 1px;
     width: 50px;
+    margin: 15px;
     border-radius: 6px;
 }
 
@@ -85,7 +78,7 @@ html, body {
     font-family: fantasy;
 }
 
-.game-state Play_AI{
+.game-state {
     display: flex;
     width: 120px;
     justify-content: center;
@@ -97,11 +90,72 @@ html, body {
     
 }
 
+.TimerState {
+    background-color: rgb(45, 126, 5);
+    border-radius: 12px;
+    height: 30px; 
+    width: 60px;
+}
+
 .button-container{
     justify-content: center;
     margin-left: 40%;
 }
 
-.right-score, .left-score{
+.upper-house, .lower-house {
+    border: 3px black solid;
+    height: 40px;    
+    margin: 1px;
+    width: 50px;
+    border-radius: 6px;
+}
+
+.upper-house {
+    margin-top: 20px;
+    border-color: blue;
+}
+
+.lower-house {
+    border-color:firebrick;
+}
+
+.player-2-score {
+    border-color:firebrick;
+}
+
+.player-1-score {
+    border-color:blue;
+}
+
+.winner {
+    text-align: center;
+    color: yellowgreen;
+    text-shadow: 3px 3px green;
+    font-size: 50px;
+    font-family: fantasy;
+}
+
+.game-state, .automation {
+    display: flex;
+    width: 120px;
+    justify-content: center;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 12px;
+    height: 60px;
+    font-size: 25px ;
+    
+}
+
+.automation {
+    font-size: 20px;
+}
+
+.button-container{
+    justify-content: center;
+    margin-left: 40%;
+}
+
+.score {
     border-radius: 6px;
 }
