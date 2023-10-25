@@ -15,9 +15,7 @@ var sec = 30;
 var ChangeGo=false;
 var TimeRanOut = false;
 var Started=false;
-var TimerSelection=false;
 var TimerIsOn = false;
-var LastChoice = "option2";
 
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
@@ -32,6 +30,9 @@ function startGame() {
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
     }
     setupGame();
+    if (TimerIsOn) {
+        timer();
+    }
 } 
 
 function AI() {
@@ -45,7 +46,6 @@ function AI() {
     document.getElementsByClassName("automation")[0].innerHTML = GameAIbuttontext;
     document.getElementById('GameTimer').innerHTML='';
     setupGame();
-    timer();
 } 
 
 function setupGame() {
@@ -81,7 +81,7 @@ function setupGame() {
     document.getElementsByClassName("messages")[0].innerHTML = pickAHouseText;
     
     document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 1's Turn!";
-    document.getElementsByClassName('alerts').innerHTML=' ';
+    playersTurn = 1;
 }
 
 function showWinner() {
@@ -175,42 +175,36 @@ function TimeOut(){
     timer();
 }
 function timer(){
-    if (TimerIsOn){
-        document.getElementById('GameTimer').innerHTML='You have 00:'+sec;
-        var timer = setInterval(function(){
-            sec--;
-            if (sec < 10){
-                document.getElementById('GameTimer').innerHTML='You have 00:0'+sec;
-            }
-            else{
-                document.getElementById('GameTimer').innerHTML='You have 00:'+sec;
-            }
-            if (sec < 0) {
-                TimeRanOut=true;
-                clearInterval(timer);
-                changePlayer();
-                TimeOut();
-            }
-            if (ChangeGo) {
-                sec = 29
-                ChangeGo = false;
-                clearInterval(timer);
-                TimeOut();
-            }
-            if (TimerIsOn==false){
-                sec =30
-                document.getElementById('GameTimer').innerHTML='';
-            }
-        }, 1000);
-}}
+    document.getElementById('GameTimer').innerHTML='You have 00:'+sec;
+    var timer = setInterval(function(){
+        sec--;
+        if (sec < 10){
+            document.getElementById('GameTimer').innerHTML='You have 00:0'+sec;
+        }
+        else{
+            document.getElementById('GameTimer').innerHTML='You have 00:'+sec;
+        }
+        if (sec < 0) {
+            TimeRanOut=true;
+            clearInterval(timer);
+            changePlayer();
+            TimeOut();
+        }
+        if (ChangeGo) {
+            sec = 29
+            ChangeGo = false;
+            clearInterval(timer);
+            TimeOut();
+        }
+    }, 1000);
+}
 
 document.getElementById("TimerSelect").onchange = function() {
-    TimerSelection = this.value;
+    var TimerSelection = this.value;
     if (TimerSelection == "option2"){
         TimerIsOn=true;
     }
     else if (TimerSelection == "option1"){
         TimerIsOn=false;
-
     }
 }
