@@ -208,14 +208,9 @@ document.getElementById("TimerSelect").onchange = function() {
     TimerSelection = this.value;
     if (TimerSelection == "option2"){
         TimerIsOn=true;
-        if (TimerSelection != LastChoice && Started){
-            document.getElementsByClassName("GameUpdates").innerHTML='Press to apply new changes!';
-        }
     }
     else if (TimerSelection == "option1"){
         TimerIsOn=false;
-        if (TimerSelection != LastChoice && Started){
-            document.getElementsByClassName("GameUpdates").innerHTML='Press to apply new changes!';
-        }
+
     }
 }
