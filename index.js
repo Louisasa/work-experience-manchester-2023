@@ -19,11 +19,8 @@ var TimerIsOn = false;
 var isAIPlayer = false;
 var houselist = [1,2,3,4,5,6];
 
-document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
-document.getElementsByClassName("automation")[0].innerHTML = GameAIbuttontext;
 document.getElementsByClassName("game-state")[0].onclick = startGame;
-document.getElementsByClassName("automation")[0].onclick = AI;
 
 function startGame() {
     if (isFirstGame){
@@ -35,19 +32,6 @@ function startGame() {
     if (TimerIsOn) {
         timer();
     }
-} 
-
-function AI() {
-    if (isAIPlayer){
-        isAIPlayer = false;
-        GameAIbuttontext = "Play Against AI";
-    } else {
-        isAIPlayer = true;
-        GameAIbuttontext = "Play Multiplayer";
-    }
-    document.getElementsByClassName("automation")[0].innerHTML = GameAIbuttontext;
-    document.getElementById('GameTimer').innerHTML='';
-    setupGame();
 } 
 
 function setupGame() {
@@ -80,9 +64,9 @@ function setupGame() {
     document.getElementById("p2h4").onclick=function() {onHouseClick(2, 4)};
     document.getElementById("p2h5").onclick=function() {onHouseClick(2, 5)};
     document.getElementById("p2h6").onclick=function() {onHouseClick(2, 6)};
-    document.getElementsByClassName("messages")[0].innerHTML = pickAHouseText;
+    document.getElementsByClassName("valid-turn-text")[0].innerHTML = pickAHouseText;
     
-    document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 1's Turn!";
+    document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1's Turn!";
     playersTurn = 1;
 }
 
@@ -94,10 +78,10 @@ function onHouseClick(player, playersHouseClicked) {
     var seedCheck = parseInt(document.getElementsByClassName(`player-${player}-house-${playersHouseClicked} seeds`)[0].innerHTML);
     if (playersTurn == player && seedCheck > 0) {
         makeAMove(player, playersHouseClicked);
-        document.getElementsByClassName("messages")[0].innerHTML = pickAHouseText;
+        document.getElementsByClassName("valid-turn-text")[0].innerHTML = pickAHouseText;
     }
     else {
-        document.getElementsByClassName("messages")[0].innerHTML = invalidTurnText;
+        document.getElementsByClassName("valid-turn-text")[0].innerHTML = invalidTurnText;
     }
     checkForEndgame();
 }
@@ -105,10 +89,10 @@ function onHouseClick(player, playersHouseClicked) {
 function changePlayer() {
     if (playersTurn == 1) {
         if (TimeRanOut){
-            document.getElementsByClassName("main-game")[0].innerHTML ="Player 2 ran out of time! Next player!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="Player 2 ran out of time! Next player!";
         }
         else{
-            document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 1's Turn!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1's Turn!";
         }
         if (Started && TimeRanOut==false){
             ChangeGo=true;
@@ -121,10 +105,10 @@ function changePlayer() {
     }
     else {
         if (TimeRanOut){
-            document.getElementsByClassName("main-game")[0].innerHTML ="Player 1 ran out of time! Next player!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="Player 1 ran out of time! Next player!";
         }
         else{
-            document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 2's Turn!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 2's Turn!";
         }
         if (TimeRanOut==false){
             ChangeGo=true;
@@ -149,8 +133,8 @@ function checkForEndgame() {
         isFirstGame = false;
         GameStateButtonText = "New game";
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
-        document.getElementsByClassName("messages")[0].innerHTML = "";
-        document.getElementsByClassName("main-game")[0].innerHTML = "";
+        document.getElementsByClassName("valid-turn-text")[0].innerHTML = "";
+        document.getElementsByClassName("players-turn")[0].innerHTML = "";
         showWinner();
     }
 }
@@ -221,7 +205,29 @@ document.getElementById("game-variant").onchange = function() {
     }
 }
 
+document.getElementById("PlayerType").onchange = function() {
+    var variantChosen = this.value;
+    if (variantChosen == "Player") {
+        isAIPlayer = false;
+    } else {
+        isAIPlayer = true;
+    }
+}
+
 function AImakeMove() {
     var houseChosen = houselist[Math.floor(Math.random() * houselist.length)];
     makeAMove(2,houseChosen);
+}
+
+function AImakeSmarterMove() {
+    var maxHouseIndex = 0;
+    var maxSeedNumber = 0;
+    for(var index = 1; index < 7; index++) {
+        var seedNumber = parseInt(document.getElementsByClassName(`player-2-house-${index} seeds`)[0].innerHTML);
+        if (seedNumber > maxSeedNumber) {
+            maxSeedNumber = seedNumber;
+            maxHouseIndex = index;
+        }
+    }
+    makeAMove(2, maxHouseIndex);
 }

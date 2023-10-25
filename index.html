@@ -6,31 +6,39 @@
   <body>
     <div class="background">
       <div class="dropdown-container">
-      <div class="dropdown">
-        <span>Version</span>
-        <select id="game-variant" class="dropdown-content">
-          <option value="Kalah">Kalah</option>
-          <option value="Oware">Oware</option>
+          <select id="game-variant" class="dropdown-content">
+            <option value="Oware">Oware</option>
+            <option value="Kalah">Kalah</option>
+          </select>
+      </div>
+
+      <div class="game-options">
+        Timer:<select id="TimerSelect" class="TimerState">
+          <option value="Off">Off</option>
+          <option value="On">On</option>
+        </select>
+        Play against:<select id="PlayerType" class="PlayerType">
+          <option value="Player">Player</option>
+          <option value="Computer">Computer</option>
+        </select>
+      </div>
+
+      <div class="winner"></div>
+
+      <div class="button-container">
+        <button class='game-state'> </button>
+      </div>
+
+      <div class="players-turn"> </div>
+
+      <div id="Timer">
+        <div class="Clock">
+          <p id="GameTimer"> </p>
         </div>
       </div>
-      </div>
-      <div class="mancala-game-type"></div>
-      Timer:<select id="TimerSelect" class="TimerState">
-        <option value="Off">Off</option>
-        <option value="On">On</option>
-      </select>
-      <div class="winner"></div>
-      <div class="button-container">
-        <button class='game-state'></button>
-        <button class='automation'></button>
-      </div>
-      <div class="main-game"></div>
-      <div id="Timer">
-      <div class="Clock">
-        <p id="GameTimer"></p>
-      </div>
-      </div>
-      <div class="messages"></div>
+
+      <div class="valid-turn-text"> </div>
+
       <div class="game">
         <div class="player-1-score score"></div>
         <div class="col">
