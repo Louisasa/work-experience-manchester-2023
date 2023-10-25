@@ -17,7 +17,19 @@ html, body {
 }
 
 .mancala-game-type {
+<<<<<<< Updated upstream
     height: 100px;
+=======
+    height: 120px;
+    text-align: center;
+    font-size: 35px;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+}
+
+.messages, .Clock, .alerts, .GameUpdates{
+>>>>>>> Stashed changes
     text-align: center;
 }
 
@@ -30,7 +42,60 @@ html, body {
     border: 1px black solid;
     height: 110px;
     width: 50px;
+<<<<<<< Updated upstream
     margin: 15px;
+=======
+    border-radius: 6px;
+}
+
+.upper-house {
+    margin-top: 20px;
+    border-color: blue;
+}
+
+.lower-house {
+    border-color:firebrick;
+}
+
+.right-score {
+    border-color:firebrick;
+}
+
+.left-score {
+    border-color:blue;
+}
+
+.winner {
+    text-align: center;
+    color: yellowgreen;
+    text-shadow: 3px 3px green;
+    font-size: 50px;
+    font-family: fantasy;
+}
+
+.game-state {
+    display: flex;
+    width: 120px;
+    justify-content: center;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 12px;
+    height: 60px;
+    font-size: 25px ;
+    
+}
+
+.TimerState {
+    background-color: rgb(45, 126, 5);
+    border-radius: 12px;
+    height: 30px; 
+    width: 60px;
+}
+
+.button-container{
+    justify-content: center;
+    margin-left: 40%;
+>>>>>>> Stashed changes
 }
 
 .house {
