@@ -85,7 +85,7 @@ html, body {
     font-family: fantasy;
 }
 
-.game-state {
+.game-state Play_AI{
     display: flex;
     width: 120px;
     justify-content: center;

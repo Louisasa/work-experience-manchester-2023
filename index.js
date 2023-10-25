@@ -9,6 +9,8 @@ var playersTurn = 1;
 var winnerText = "Winner!";
 var invalidTurnText = "Invalid Turn! Try a different house.";
 var pickAHouseText = "Pick a house:";
+var AIButton = 'Play against AI';
+var BoolAI = false; 
 
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
@@ -123,4 +125,23 @@ function capture_till(StartHouse, player){
         CurrentHouse-= 1;
         CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
     }
+}
+
+document.getElementsByClassName("Play_AI")[0].innerHTML = AIButton
+
+function Play_AI(){
+    if ((BoolAI == False) && (HasGameStarted == False)){
+        AIButton = 'Play against AI'
+    }
+    if (HasGameStarted){
+        // Hide AI Button
+        document.getElementsByClassName("Play_AI")[0].setAttribute("style", "display: none");
+    }
+    if (BoolAI){
+        // Hide AI Button
+        setupGame();
+        playersTurn();
+    }
+    document.getElementsByClassName("Play_AI")[0].innerHTML = AIButton
+
 }
