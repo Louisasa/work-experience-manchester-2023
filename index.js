@@ -10,7 +10,8 @@ var playersTurn = 1;
 var winnerText = "Winner!";
 var invalidTurnText = "Invalid Turn! Try a different house.";
 var pickAHouseText = "Pick a house:";
-var isAIPlayer = true;
+var isAIPlayer = false;
+var houselist = [1,2,3,4,5,6];
 
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
@@ -102,6 +103,7 @@ function changePlayer() {
         document.getElementsByClassName("main-game")[0].innerHTML ="It's Player 2's Turn!";
         playersTurn = 1;
     }
+
 }
 
 function makeAMove(playerNumber, houseNumber) {
@@ -138,4 +140,9 @@ function capture_till(StartHouse, player){
         CurrentHouse-= 1;
         CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
     }
+}
+
+function AImakeMove() {
+    var houseChosen = houselist[Math.floor(Math.random() * houselist.length)];
+    makeAMove(2,houseChosen);
 }
