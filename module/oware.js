@@ -1,4 +1,4 @@
-import { setnumberofseeds } from "./updateSeedsStyling";
+import { setnumberofseeds } from "./updateSeedsStyling.js";
 
 export var versionName = "Oware";
 
