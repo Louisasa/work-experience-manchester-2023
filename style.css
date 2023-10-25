@@ -200,6 +200,8 @@ html, body {
     color: white;
     text-shadow: 1.5px 1.5px black;
     text-align: center;
+    z-index: 2;
+    position:absolute;
 }
 
 .hide {

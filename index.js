@@ -1,5 +1,6 @@
 import { makeAMove as OwareMakeAMove, versionName as OwareVersionName } from "./module/oware.js";
 import { makeAMove as KalahMakeAMove, versionName as KalahVersionName } from "./module/kalah.js";
+import { setnumberofseeds } from "./module/updateSeedsStyling.js";
 import confetti from "https://cdn.skypack.dev/canvas-confetti@1";
 
 var version = OwareVersionName;
@@ -39,6 +40,20 @@ function startGame() {
 } 
 
 function setupGame() {
+    setnumberofseeds(4, 1, 1)
+    setnumberofseeds(4, 2, 1)
+    setnumberofseeds(4, 3, 1)
+    setnumberofseeds(4, 4, 1)
+    setnumberofseeds(4, 5, 1)
+    setnumberofseeds(4, 6, 1)
+    setnumberofseeds(4, 1, 2)
+    setnumberofseeds(4, 2, 2)
+    setnumberofseeds(4, 3, 2)
+    setnumberofseeds(4, 4, 2)
+    setnumberofseeds(4, 5, 2)
+    setnumberofseeds(4, 6, 2)
+
+
     document.getElementsByClassName("player-1-house-1 seeds")[0].innerHTML = initialHouseNumber;
     document.getElementsByClassName("player-1-house-2 seeds")[0].innerHTML = initialHouseNumber;
     document.getElementsByClassName("player-1-house-3 seeds")[0].innerHTML = initialHouseNumber;
@@ -153,8 +168,6 @@ function changePlayer() {
         playersTurn = 1;
     }
 }
-
-
 
 function makeAMove(playerNumber, houseNumber) {
     var toChangePlayer = true;
