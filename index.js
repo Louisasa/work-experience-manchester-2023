@@ -3,16 +3,20 @@ import { makeAMove as OwareMakeAMove, versionName as OwareVersionName } from "./
 var version = OwareVersionName;
 var HasGameStarted = false; 
 var GameStateButtonText = 'Start Game';
+var GameAIbuttontext = 'Play Multiplayer';
 var initialHouseNumber = "4";
 var initialScoreNumber = "0";
 var playersTurn = 1;
 var winnerText = "Winner!";
 var invalidTurnText = "Invalid Turn! Try a different house.";
 var pickAHouseText = "Pick a house:";
+var isAIPlayer = true;
 
 document.getElementsByClassName("mancala-game-type")[0].innerHTML = version;
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
+document.getElementsByClassName("automation")[0].innerHTML = GameAIbuttontext;
 document.getElementsByClassName("game-state")[0].onclick = startGame;
+document.getElementsByClassName("automation")[0].onclick = AI;
 
 function startGame() {
     if (HasGameStarted){
@@ -24,6 +28,17 @@ function startGame() {
     }
     document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
     setupGame();
+} 
+
+function AI() {
+    if (isAIPlayer){
+        isAIPlayer = false;
+        GameAIbuttontext = "Play Against AI";
+    } else {
+        isAIPlayer = true;
+        GameAIbuttontext = "Play Multiplayer";
+    }
+    document.getElementsByClassName("automation")[0].innerHTML = GameAIbuttontext;
 } 
 
 function setupGame() {
