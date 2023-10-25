@@ -69,11 +69,11 @@ html, body {
     border-color:firebrick;
 }
 
-.right-score {
+.player-2-score {
     border-color:firebrick;
 }
 
-.left-score {
+.player-1-score {
     border-color:blue;
 }
 
@@ -106,6 +106,6 @@ html, body {
     margin-left: 40%;
 }
 
-.right-score, .left-score{
+.score {
     border-radius: 6px;
 }
