@@ -1,4 +1,5 @@
 import { makeAMove as OwareMakeAMove, versionName as OwareVersionName } from "./module/oware.js";
+import { versionName as KalahVersionName } from "./module/kalah.js";
 
 var version = OwareVersionName;
 var GameStateButtonText = 'Start Game';
@@ -11,9 +12,9 @@ var invalidTurnText = "Invalid Turn! Try a different house.";
 var pickAHouseText = "Pick a house:";
 var isFirstGame = true;
 var sec = 30;
-var ChangeGo=false;
+var ChangeGo = false;
 var TimeRanOut = false;
-var Started=false;
+var Started = false;
 var TimerIsOn = false;
 var isAIPlayer = false;
 var houselist = [1,2,3,4,5,6];
@@ -203,11 +204,20 @@ function timer(){
 
 document.getElementById("TimerSelect").onchange = function() {
     var TimerSelection = this.value;
-    if (TimerSelection == "option2"){
+    if (TimerSelection == "On"){
         TimerIsOn=true;
     }
-    else if (TimerSelection == "option1"){
+    else if (TimerSelection == "Off"){
         TimerIsOn=false;
+    }
+}
+
+document.getElementById("game-variant").onchange = function() {
+    var variantChosen = this.value;
+    if (variantChosen == "Kalah") {
+        version = KalahVersionName;
+    } else if (variantChosen == "Oware") {
+        version = OwareVersionName;
     }
 }
 
