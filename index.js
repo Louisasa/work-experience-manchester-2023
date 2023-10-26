@@ -1,12 +1,10 @@
 import { 
     makeAMove as OwareMakeAMove, 
     versionName as OwareVersionName, 
-    checkForEndgame as OwareCheckForEndgame 
 } from "./module/oware.js";
 import { 
     makeAMove as KalahMakeAMove, 
     versionName as KalahVersionName, 
-    checkForEndgame as KalahCheckForEndgame 
 } from "./module/kalah.js";
 
 var version = OwareVersionName;
@@ -156,14 +154,14 @@ function changePlayer() {
 
 
 function makeAMove(playerNumber, houseNumber) {
-    var changePlayer = true;
+    var toChangePlayer = true;
     if (version == OwareVersionName) {
-        changePlayer = OwareMakeAMove(playerNumber, houseNumber);
+        toChangePlayer = OwareMakeAMove(playerNumber, houseNumber);
     } else if (version == KalahVersionName) {
-        changePlayer = KalahMakeAMove(playerNumber, houseNumber);
+        toChangePlayer = KalahMakeAMove(playerNumber, houseNumber);
     }
     
-    if (changePlayer) {
+    if (toChangePlayer) {
         changePlayer();
     }
 }
