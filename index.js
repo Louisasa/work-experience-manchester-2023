@@ -1,11 +1,6 @@
-import { 
-    makeAMove as OwareMakeAMove, 
-    versionName as OwareVersionName, 
-} from "./module/oware.js";
-import { 
-    makeAMove as KalahMakeAMove, 
-    versionName as KalahVersionName, 
-} from "./module/kalah.js";
+import { makeAMove as OwareMakeAMove, versionName as OwareVersionName } from "./module/oware.js";
+import { makeAMove as KalahMakeAMove, versionName as KalahVersionName } from "./module/kalah.js";
+import confetti from "https://cdn.skypack.dev/canvas-confetti@1";
 
 var version = OwareVersionName;
 var GameStateButtonText = 'Start Game';
@@ -93,6 +88,14 @@ function showWinner() {
         winnerText="Draw!";
     }
     document.getElementsByClassName("winner")[0].innerHTML = winnerText;
+    confetti({
+        particleCount: 500,
+        spread: 100,
+        origin: {
+            x: 0.5,
+            y: 0.5
+        }
+    });
 }
 
 function onHouseClick(player, playersHouseClicked) {
@@ -164,6 +167,7 @@ function makeAMove(playerNumber, houseNumber) {
     if (toChangePlayer) {
         changePlayer();
     }
+
 }
 
 function checkForEndgame(){
@@ -292,3 +296,4 @@ function AImakeSmarterMove() {
     makeAMove(2, maxHouseIndex);
 
 }
+
