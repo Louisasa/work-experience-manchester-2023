@@ -1,8 +1,7 @@
 
 .counter {
-    display: block;
-    height: 9px;
-    width: 9px;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
     background-color: black;
     display: flex;
@@ -12,9 +11,9 @@
 .seed-container {
     display: flex;
     flex-flow: column wrap;
-    height: 40px;
-    width: 50px;
+    height: 90px;
+    width: 140px;
     position: absolute;
-    gap: 1.5px;
-    margin: 0px;
+    justify-content: space-evenly;
+    padding: 5px;
 }
