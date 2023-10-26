@@ -54,7 +54,9 @@ function capture_till(StartHouse, player){
         capture(CurrentHouse_Seed_Count,player);
         // change current house to the previous house in order of sowing seeds
         CurrentHouse-= 1;
-        CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
+        if (CurrentHouse > 0) {
+            CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
+        }
     }
 
     return true;
