@@ -1,3 +1,5 @@
+import { setnumberofseeds } from "./updateSeedsStyling.js";
+
 export var versionName = "Kalah";
 var Opposite_Map = [6,5,4,3,2,1];
 
@@ -7,14 +9,15 @@ export function makeAMove(playerNumber, houseNumber) {
 
     // Empty this house
     var amountleft = 0;
-    document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML = amountleft
+    document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML = amountleft;
+    setnumberofseeds(0, houseNumber, playerNumber);
 
     var houseIndex = houseNumber+1;
     var playerNumberToUpdate = playerNumber;
 
     // Add seeds anti-clockwise
     for(var index = 0; index < numberOfSeeds; index++ ) {
-        if (houseIndex == 7 && playerNumberToUpdate == playerNumber){
+        if (houseIndex === 7 && playerNumberToUpdate === playerNumber){
             document.getElementsByClassName(`player-${playerNumber}-score`)[0].innerHTML = parseInt(document.getElementsByClassName(`player-${playerNumber}-score`)[0].innerHTML) + 1;
             houseIndex++;
             continue;
@@ -29,8 +32,9 @@ export function makeAMove(playerNumber, houseNumber) {
             } 
         }
         if (document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML < 12){
-            var seedsMoved = document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML;
-            document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = parseInt(seedsMoved)+1;
+            var seedsMoved = parseInt(document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML);
+            document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = seedsMoved+1;
+            setnumberofseeds(seedsMoved+1, houseIndex, playerNumberToUpdate);
         }
         else{
            index=index-1;
@@ -38,7 +42,7 @@ export function makeAMove(playerNumber, houseNumber) {
         houseIndex++;
     }
 
-    if (houseIndex-1 == 7) {
+    if (houseIndex-1 === 7) {
         return false;
     }
     else {
@@ -52,15 +56,20 @@ export function makeAMove(playerNumber, houseNumber) {
 }
 
 function kalah_capture(last_house,side,player){
-    var currentSeedCount = parseInt((document.getElementsByClassName(`player-${side}-house-${last_house} seeds`)[0].innerHTML));
+    var opponent_house = Opposite_Map[last_house-1];
+    var oppositePlayer = player === 1 ? 2 : 1;
 
-    if ((currentSeedCount == 1) && (side == player)){
+    var captureCount = parseInt(document.getElementsByClassName(`player-${oppositePlayer}-house-${opponent_house} seeds`)[0].innerHTML);
+    var currentSeedCount = parseInt(document.getElementsByClassName(`player-${side}-house-${last_house} seeds`)[0].innerHTML);
 
-        opponent_house = Opposite_Map[last_house-1];
+    if (currentSeedCount === 1 && side === player && captureCount > 0){
+        document.getElementsByClassName(`player-${oppositePlayer}-house-${opponent_house} seeds`)[0].innerHTML = 0;
+        document.getElementsByClassName(`player-${side}-house-${last_house} seeds`)[0].innerHTML = 0;
 
-        captureCount = parseInt(document.getElementsByClassName(`${opponent_house}-house-${last_house} seeds`)[0].innerHTML);
+        setnumberofseeds(0, last_house, player);
+        setnumberofseeds(0, opponent_house, oppositePlayer);
         
-        currentScore = parseInt(document.getElementsByClassName(`player-${player}-score`)[0].innerHTML);
+        var currentScore = parseInt(document.getElementsByClassName(`player-${player}-score`)[0].innerHTML);
         
         document.getElementsByClassName(`player-${player}-score`)[0].innerHTML = (currentScore + captureCount);
     }

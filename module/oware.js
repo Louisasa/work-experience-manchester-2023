@@ -26,16 +26,16 @@ export function makeAMove(playerNumber, houseNumber) {
             } 
         }
         if (document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML < 12){
-         var seedsMoved = parseInt(document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML);
-         document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = seedsMoved+1;
-         setnumberofseeds(seedsMoved+1, houseIndex, playerNumberToUpdate);
+            var seedsMoved = parseInt(document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML);
+            document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = seedsMoved+1;
+            setnumberofseeds(seedsMoved+1, houseIndex, playerNumberToUpdate);
         }
         else{
             index=index-1;
         }
-         houseIndex++;
+        houseIndex++;
     }
-    if (playerNumberToUpdate == playerNumber) {
+    if (playerNumberToUpdate != playerNumber) {
         capture_till(houseIndex-1, playerNumberToUpdate);
     }
 }
@@ -48,12 +48,13 @@ function capture(numberOfSeeds, player){
 function capture_till(StartHouse, player){
     var CurrentHouse = StartHouse;
     var CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
-    while ((CurrentHouse_Seed_Count == 2 || CurrentHouse_Seed_Count == 3) && CurrentHouse > 0){
+    while ((CurrentHouse_Seed_Count === 2 || CurrentHouse_Seed_Count === 3) && CurrentHouse > 0){
         document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML = 0;
+        setnumberofseeds(0, CurrentHouse, player);
         // capture the seeds
         capture(CurrentHouse_Seed_Count,player);
         // change current house to the previous house in order of sowing seeds
-        CurrentHouse-= 1;
+        CurrentHouse--;
         if (CurrentHouse > 0) {
             CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
         }
