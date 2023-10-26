@@ -17,6 +17,7 @@ var Started = false;
 var TimerIsOn = false;
 var isAIPlayer = false;
 var houselist = [1,2,3,4,5,6];
+var timer = null;
 
 document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
 document.getElementsByClassName("game-state")[0].onclick = startGame;
@@ -29,7 +30,10 @@ function startGame() {
     }
     setupGame();
     if (TimerIsOn) {
-        timer();
+        startTimer();
+    } else {
+        clearInterval(timer);
+        document.getElementById('GameTimer').innerHTML = null;
     }
 } 
 
@@ -97,10 +101,10 @@ function changePlayer() {
             ChangeGo=true;
         }
         else{
-            TimeRanOut=false
+            TimeRanOut=false;
         }  
         playersTurn = 2;
-        Started = true
+        Started = true;
     }
     else {
         if (TimeRanOut){
@@ -158,11 +162,11 @@ function capture_till(StartHouse, player){
 
 function TimeOut(){
     sec = 29;
-    timer();
+    startTimer();
 }
-function timer(){
+function startTimer(){
     document.getElementById('GameTimer').innerHTML='You have 00:'+sec;
-    var timer = setInterval(function(){
+    timer = setInterval(function(){
         sec--;
         if (sec < 10){
             document.getElementById('GameTimer').innerHTML='You have 00:0'+sec;
