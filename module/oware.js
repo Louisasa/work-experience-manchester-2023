@@ -25,7 +25,6 @@ export function makeAMove(playerNumber, houseNumber) {
                 playerNumberToUpdate = 1;
             } 
         }
-<<<<<<< HEAD
         if (document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML < 12){
          var seedsMoved = parseInt(document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML);
          document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = seedsMoved+1;
@@ -35,13 +34,6 @@ export function makeAMove(playerNumber, houseNumber) {
             index=index-1
         }
          houseIndex++;
-=======
-        var seedsMoved = document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML;
-        document.getElementsByClassName(`player-${playerNumberToUpdate}-house-${houseIndex} seeds`)[0].innerHTML = parseInt(seedsMoved)+1;
-        setnumberofseeds(seedsMoved+1, houseIndex, playerNumberToUpdate)
-        houseIndex++;
-
->>>>>>> d31a385 (visible seeds in the containers)
     }
     capture_till(houseIndex-1, playerNumberToUpdate);
 }
