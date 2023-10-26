@@ -31,10 +31,11 @@ function startGame() {
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
     }
     setupGame();
+    clearInterval(timer);
     if (TimerIsOn) {
+        sec = 30;
         startTimer();
     } else {
-        clearInterval(timer);
         document.getElementById('GameTimer').innerHTML = null;
     }
 } 
