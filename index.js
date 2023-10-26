@@ -83,7 +83,7 @@ function onHouseClick(player, playersHouseClicked) {
         makeAMove(player, playersHouseClicked);
         document.getElementsByClassName("valid-turn-text")[0].innerHTML = pickAHouseText;
     }
-    else {
+    else{
         document.getElementsByClassName("valid-turn-text")[0].innerHTML = invalidTurnText;
     }
     checkForEndgame();
@@ -100,6 +100,11 @@ function changePlayer() {
         if (Started && TimeRanOut==false){
             ChangeGo=true;
         }
+        if (isAIPlayer){
+            playersTurn = 1 
+            return 
+
+        }
         else{
             TimeRanOut=false;
         }  
@@ -107,12 +112,16 @@ function changePlayer() {
         Started = true;
     }
     else {
+        }
         if (TimeRanOut){
             document.getElementsByClassName("players-turn")[0].innerHTML ="Player 1 ran out of time! Next player!";
         }
         else{
             document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1`'s Turn!";
         }
+        if (isAIPlayer){
+            AImakeMove()
+            
         if (TimeRanOut==false){
             ChangeGo=true;
         }
