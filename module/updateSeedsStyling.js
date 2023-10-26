@@ -20,18 +20,10 @@ export function setnumberofseeds(numberOfSeedsInHouse, houseNumber, playerNumber
 
 function showSeed(seedNumber, houseNumber, playerNumber) {
     var seed = document.getElementsByClassName(`p${playerNumber}h${houseNumber}c${seedNumber}`)[0];
-    //console.log(seed);
-    console.log(seedNumber);
-    console.log(houseNumber);
-    console.log(playerNumber);
     seed.classList.remove('hide');
     seed.classList.add('show');
 }   
 function hideSeed(seedNumber, houseNumber, playerNumber) {
     var seed = document.getElementsByClassName(`p${playerNumber}h${houseNumber}c${seedNumber}`)[0];
-    //console.log(hideseed);
-    console.log(seedNumber);
-    console.log(houseNumber);
-    console.log(playerNumber);
     seed.classList.remove('show');
     seed.classList.add('hide');}

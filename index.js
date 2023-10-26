@@ -40,18 +40,31 @@ function startGame() {
 } 
 
 function setupGame() {
-    setnumberofseeds(4, 1, 1)
-    setnumberofseeds(4, 2, 1)
-    setnumberofseeds(4, 3, 1)
-    setnumberofseeds(4, 4, 1)
-    setnumberofseeds(4, 5, 1)
-    setnumberofseeds(4, 6, 1)
-    setnumberofseeds(4, 1, 2)
-    setnumberofseeds(4, 2, 2)
-    setnumberofseeds(4, 3, 2)
-    setnumberofseeds(4, 4, 2)
-    setnumberofseeds(4, 5, 2)
-    setnumberofseeds(4, 6, 2)
+    setnumberofseeds(0, 1, 1);
+    setnumberofseeds(0, 2, 1);
+    setnumberofseeds(0, 3, 1);
+    setnumberofseeds(0, 4, 1);
+    setnumberofseeds(0, 5, 1);
+    setnumberofseeds(0, 6, 1);
+    setnumberofseeds(0, 1, 2);
+    setnumberofseeds(0, 2, 2);
+    setnumberofseeds(0, 3, 2);
+    setnumberofseeds(0, 4, 2);
+    setnumberofseeds(0, 5, 2);
+    setnumberofseeds(0, 6, 2);
+    
+    setnumberofseeds(4, 1, 1);
+    setnumberofseeds(4, 2, 1);
+    setnumberofseeds(4, 3, 1);
+    setnumberofseeds(4, 4, 1);
+    setnumberofseeds(4, 5, 1);
+    setnumberofseeds(4, 6, 1);
+    setnumberofseeds(4, 1, 2);
+    setnumberofseeds(4, 2, 2);
+    setnumberofseeds(4, 3, 2);
+    setnumberofseeds(4, 4, 2);
+    setnumberofseeds(4, 5, 2);
+    setnumberofseeds(4, 6, 2);
 
 
     document.getElementsByClassName("player-1-house-1 seeds")[0].innerHTML = initialHouseNumber;
@@ -86,6 +99,7 @@ function setupGame() {
     document.getElementsByClassName("valid-turn-text")[0].innerHTML = pickAHouseText;
     
     document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1's Turn!";
+    document.getElementsByClassName("winner")[0].innerHTML = null;
     playersTurn = 1;
 }
 
@@ -130,21 +144,13 @@ function onHouseClick(player, playersHouseClicked) {
 function changePlayer() {
     if (playersTurn == 1) {
         if (TimeRanOut){
-            document.getElementsByClassName("players-turn")[0].innerHTML ="Player 2 ran out of time! Next player!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="Player 1 ran out of time! Next player!";
         }
         else{
             document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 2's Turn!";
         }
         if (Started && TimeRanOut==false){
             ChangeGo=true;
-        }
-        if (isAIPlayer){
-            var choice = Math.floor(Math.random() * 2);
-            if (choice == 1) {
-                AImakeMove();
-            } else {
-                AImakeSmarterMove();
-            }
         }
         else{
             TimeRanOut=false;
@@ -154,7 +160,7 @@ function changePlayer() {
     }
     else {
         if (TimeRanOut){
-            document.getElementsByClassName("players-turn")[0].innerHTML ="Player 1 ran out of time! Next player!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="Player 2 ran out of time! Next player!";
         }
         else{
             document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1`'s Turn!";
@@ -177,7 +183,14 @@ function makeAMove(playerNumber, houseNumber) {
         toChangePlayer = KalahMakeAMove(playerNumber, houseNumber);
     }
     
-    if (toChangePlayer) {
+    if(isAIPlayer) {
+        var choice = Math.floor(Math.random() * 2);
+        if (choice == 1) {
+            AImakeMove();
+        } else {
+            AImakeSmarterMove();
+        }
+    } else if (toChangePlayer) {
         changePlayer();
     }
 
@@ -293,7 +306,11 @@ document.getElementById("PlayerType").onchange = function() {
 
 function AImakeMove() {
     var houseChosen = houselist[Math.floor(Math.random() * houselist.length)];
-    makeAMove(2,houseChosen);
+    if (version == OwareVersionName) {
+        OwareMakeAMove(2, houseChosen);
+    } else if (version == KalahVersionName) {
+        KalahMakeAMove(2, houseChosen);
+    }
 }
 
 function AImakeSmarterMove() {
@@ -306,7 +323,11 @@ function AImakeSmarterMove() {
             maxHouseIndex = index;
         }
     }
-    makeAMove(2, maxHouseIndex);
+    if (version == OwareVersionName) {
+        OwareMakeAMove(2, maxHouseIndex);
+    } else if (version == KalahVersionName) {
+        KalahMakeAMove(2, maxHouseIndex);
+    }
 
 }
 

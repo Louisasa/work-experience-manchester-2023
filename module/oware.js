@@ -9,7 +9,7 @@ export function makeAMove(playerNumber, houseNumber) {
     // Empty this house
     var amountleft = 0;
     document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML = amountleft;
-    setnumberofseeds(0,houseNumber, playerNumber)
+    setnumberofseeds(0,houseNumber, playerNumber);
 
     var houseIndex = houseNumber+1;
     var playerNumberToUpdate = playerNumber;
@@ -31,11 +31,13 @@ export function makeAMove(playerNumber, houseNumber) {
          setnumberofseeds(seedsMoved+1, houseIndex, playerNumberToUpdate);
         }
         else{
-            index=index-1
+            index=index-1;
         }
          houseIndex++;
     }
-    capture_till(houseIndex-1, playerNumberToUpdate);
+    if (playerNumberToUpdate == playerNumber) {
+        capture_till(houseIndex-1, playerNumberToUpdate);
+    }
 }
 
 function capture(numberOfSeeds, player){
