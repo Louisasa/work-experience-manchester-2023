@@ -42,23 +42,6 @@ html, body {
     border-radius: 6px;
 }
 
-.upper-house {
-    margin-top: 20px;
-    border-color: blue;
-}
-
-.lower-house {
-    border-color:firebrick;
-}
-
-.right-score {
-    border-color:firebrick;
-}
-
-.left-score {
-    border-color:blue;
-}
-
 .winner {
     text-align: center;
     color: yellowgreen;
@@ -108,11 +91,11 @@ html, body {
     border-color:firebrick;
 }
 
-.player-2-score {
+.player-1-score {
     border-color:firebrick;
 }
 
-.player-1-score {
+.player-2-score {
     border-color:blue;
 }
 
@@ -170,4 +153,12 @@ html, body {
     margin: 20px;
     justify-content: center;
     align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }

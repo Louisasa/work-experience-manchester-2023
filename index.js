@@ -95,7 +95,7 @@ function changePlayer() {
             document.getElementsByClassName("players-turn")[0].innerHTML ="Player 2 ran out of time! Next player!";
         }
         else{
-            document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1's Turn!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 2's Turn!";
         }
         if (Started && TimeRanOut==false){
             ChangeGo=true;
@@ -111,7 +111,7 @@ function changePlayer() {
             document.getElementsByClassName("players-turn")[0].innerHTML ="Player 1 ran out of time! Next player!";
         }
         else{
-            document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 2's Turn!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1`'s Turn!";
         }
         if (TimeRanOut==false){
             ChangeGo=true;
@@ -198,8 +198,15 @@ document.getElementById("PlayerType").onchange = function() {
     var variantChosen = this.value;
     if (variantChosen == "Player") {
         isAIPlayer = false;
+        var timerContainer = document.getElementsByClassName('timer-container')[0];
+        timerContainer.classList.remove('hide');
+        timerContainer.classList.add('show');
     } else {
         isAIPlayer = true;
+        var timerContainer = document.getElementsByClassName('timer-container')[0];
+        timerContainer.classList.remove('show');
+        timerContainer.classList.add('hide');
+        TimerIsOn=false;
     }
 }
 

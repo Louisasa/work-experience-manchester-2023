@@ -13,14 +13,18 @@
       </div>
 
       <div class="game-options">
-        Timer:<select id="TimerSelect" class="TimerState">
-          <option value="Off">Off</option>
-          <option value="On">On</option>
-        </select>
-        Play against:<select id="PlayerType" class="PlayerType">
-          <option value="Player">Player</option>
-          <option value="Computer">Computer</option>
-        </select>
+        <div class="player-type-container">
+          Play against:<select id="PlayerType" class="PlayerType">
+            <option value="Player">Player</option>
+            <option value="Computer">Computer</option>
+          </select>
+        </div>
+        <div class="timer-container show">
+          Timer:<select id="TimerSelect" class="TimerState">
+            <option value="Off">Off</option>
+            <option value="On">On</option>
+          </select>
+        </div>
       </div>
 
       <div class="winner"></div>
@@ -40,56 +44,56 @@
       <div class="valid-turn-text"> </div>
 
       <div class="game">
-        <div id='p1h7' class="player-1-score score"></div>
+        <div id='p2h7' class="player-2-score score"></div>
         <div class="col">
-          <div id="p1h6" class="player-1-house-6 upper-house">
-            <div class="player-1-house-6 seeds"></div>
+          <div id="p2h6" class="player-2-house-6 upper-house">
+            <div class="player-2-house-6 seeds"></div>
           </div>
-          <div id="p2h1" class="player-2-house-1 lower-house">
-            <div class="player-2-house-1 seeds"></div>
+          <div id="p1h1" class="player-1-house-1 lower-house">
+            <div class="player-1-house-1 seeds"></div>
           </div>  
         </div>
         <div class="col">
-          <div id="p1h5" class="player-1-house-5 upper-house">
-            <div class="player-1-house-5 seeds"></div>
+          <div id="p2h5" class="player-2-house-5 upper-house">
+            <div class="player-2-house-5 seeds"></div>
           </div>
-          <div id="p2h2" class="player-2-house-2 lower-house">
-            <div class="player-2-house-2 seeds"></div>
-          </div>
-        </div>
-        <div class="col">
-          <div id="p1h4" class="player-1-house-4 upper-house">
-            <div class="player-1-house-4 seeds"></div>
-          </div>
-          <div id="p2h3" class="player-2-house-3 lower-house">
-            <div class="player-2-house-3 seeds"></div>
+          <div id="p1h2" class="player-1-house-2 lower-house">
+            <div class="player-1-house-2 seeds"></div>
           </div>
         </div>
         <div class="col">
-          <div id="p1h3" class="player-1-house-3 upper-house">
+          <div id="p2h4" class="player-2-house-4 upper-house">
+            <div class="player-2-house-4 seeds"></div>
+          </div>
+          <div id="p1h3" class="player-1-house-3 lower-house">
             <div class="player-1-house-3 seeds"></div>
           </div>
-          <div id="p2h4" class="player-2-house-4 lower-house">
-            <div class="player-2-house-4 seeds"></div>
+        </div>
+        <div class="col">
+          <div id="p2h3" class="player-2-house-3 upper-house">
+            <div class="player-2-house-3 seeds"></div>
+          </div>
+          <div id="p1h4" class="player-1-house-4 lower-house">
+            <div class="player-1-house-4 seeds"></div>
           </div> 
         </div>
         <div class="col">
-          <div id="p1h2" class="player-1-house-2 upper-house">
-            <div class="player-1-house-2 seeds"></div>
+          <div id="p2h2" class="player-2-house-2 upper-house">
+            <div class="player-2-house-2 seeds"></div>
           </div>
-          <div id="p2h5" class="player-2-house-5 lower-house">
-            <div class="player-2-house-5 seeds"></div>
+          <div id="p1h5" class="player-1-house-5 lower-house">
+            <div class="player-1-house-5 seeds"></div>
           </div>
         </div>
         <div class="col">
-          <div id="p1h1" class="player-1-house-1 upper-house">
-            <div class="player-1-house-1 seeds"></div>
+          <div id="p2h1" class="player-2-house-1 upper-house">
+            <div class="player-2-house-1 seeds"></div>
           </div>
-          <div id="p2h6" class="player-2-house-6 lower-house">
-            <div class="player-2-house-6 seeds"></div>
+          <div id="p1h6" class="player-1-house-6 lower-house">
+            <div class="player-1-house-6 seeds"></div>
           </div>
         </div>
-        <div id="p2h7" class="player-2-score score"></div>
+        <div id="p1h7" class="player-1-score score"></div>
       </div>
       
 
