@@ -50,4 +50,6 @@ function capture_till(StartHouse, player){
         CurrentHouse-= 1;
         CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
     }
+
+    return true;
 }

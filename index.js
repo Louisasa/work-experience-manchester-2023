@@ -134,12 +134,17 @@ function changePlayer() {
 }
 
 function makeAMove(playerNumber, houseNumber) {
+    var numberOfSeeds = document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML;
+    var changePlayer = true;
     if (version == OwareVersionName) {
-        OwareMakeAMove(playerNumber, houseNumber);
+        changePlayer = OwareMakeAMove(playerNumber, houseNumber);
     } else if (version == KalahVersionName) {
-        KalahMakeAMove(playerNumber, houseNumber);
+        changePlayer = KalahMakeAMove(playerNumber, houseNumber);
     }
-    changePlayer();
+    
+    if (changePlayer) {
+        changePlayer()
+    }
 }
 
 function checkForEndgame() {
@@ -235,4 +240,5 @@ function AImakeSmarterMove() {
         }
     }
     makeAMove(2, maxHouseIndex);
+
 }
