@@ -1,5 +1,5 @@
 import { makeAMove as OwareMakeAMove, versionName as OwareVersionName } from "./module/oware.js";
-import { versionName as KalahVersionName } from "./module/kalah.js";
+import { makeAMove as KalahMakeAMove, versionName as KalahVersionName } from "./module/kalah.js";
 
 var version = OwareVersionName;
 var GameStateButtonText = 'Start Game';
@@ -125,7 +125,11 @@ function changePlayer() {
 }
 
 function makeAMove(playerNumber, houseNumber) {
-    OwareMakeAMove(playerNumber, houseNumber);
+    if (version == OwareVersionName) {
+        OwareMakeAMove(playerNumber, houseNumber);
+    } else if (version == KalahVersionName) {
+        KalahMakeAMove(playerNumber, houseNumber);
+    }
     changePlayer();
 }
 
