@@ -4,6 +4,7 @@
   },
   "type": "module",
   "exports": {
-    "./module/*": "./module/*.js"
+    "./module/*": "./module/*.js",
+    "./*": "./*.js"
   }
 }
