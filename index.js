@@ -1,5 +1,13 @@
-import { makeAMove as OwareMakeAMove, versionName as OwareVersionName } from "./module/oware.js";
-import { makeAMove as KalahMakeAMove, versionName as KalahVersionName } from "./module/kalah.js";
+import { 
+    makeAMove as OwareMakeAMove, 
+    versionName as OwareVersionName, 
+    checkForEndgame as OwareCheckForEndgame 
+} from "./module/oware.js";
+import { 
+    makeAMove as KalahMakeAMove, 
+    versionName as KalahVersionName, 
+    checkForEndgame as KalahCheckForEndgame 
+} from "./module/kalah.js";
 
 var version = OwareVersionName;
 var GameStateButtonText = 'Start Game';
@@ -74,6 +82,18 @@ function setupGame() {
 }
 
 function showWinner() {
+    GameStateButtonText = "New Game";
+    document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
+    isFirstGame = false;
+    if (document.getElementsByClassName(`player-2-score`)[0].innerHTML > document.getElementsByClassName(`player-1-score`)[0].innerHTML){
+            winnerText="Player 2 Wins!";
+    }
+    else if (document.getElementsByClassName(`player-1-score`)[0].innerHTML > document.getElementsByClassName(`player-2-score`)[0].innerHTML){
+        winnerText="Player 1 Wins!";
+    }
+    else{
+        winnerText="Draw!";
+    }
     document.getElementsByClassName("winner")[0].innerHTML = winnerText;
 }
 
@@ -86,7 +106,9 @@ function onHouseClick(player, playersHouseClicked) {
     else{
         document.getElementsByClassName("valid-turn-text")[0].innerHTML = invalidTurnText;
     }
+    checkForNoMoves();
     checkForEndgame();
+    
 }
 
 function changePlayer() {
@@ -101,9 +123,12 @@ function changePlayer() {
             ChangeGo=true;
         }
         if (isAIPlayer){
-            playersTurn = 1 
-            return 
-
+            var choice = Math.floor(Math.random() * 2);
+            if (choice == 1) {
+                AImakeMove();
+            } else {
+                AImakeSmarterMove();
+            }
         }
         else{
             TimeRanOut=false;
@@ -112,16 +137,12 @@ function changePlayer() {
         Started = true;
     }
     else {
-        }
         if (TimeRanOut){
             document.getElementsByClassName("players-turn")[0].innerHTML ="Player 1 ran out of time! Next player!";
         }
         else{
             document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1`'s Turn!";
         }
-        if (isAIPlayer){
-            AImakeMove()
-            
         if (TimeRanOut==false){
             ChangeGo=true;
         }
@@ -130,11 +151,11 @@ function changePlayer() {
         }
         playersTurn = 1;
     }
-
 }
 
+
+
 function makeAMove(playerNumber, houseNumber) {
-    var numberOfSeeds = document.getElementsByClassName(`player-${playerNumber}-house-${houseNumber} seeds`)[0].innerHTML;
     var changePlayer = true;
     if (version == OwareVersionName) {
         changePlayer = OwareMakeAMove(playerNumber, houseNumber);
@@ -143,20 +164,51 @@ function makeAMove(playerNumber, houseNumber) {
     }
     
     if (changePlayer) {
-        changePlayer()
+        changePlayer();
     }
 }
 
-function checkForEndgame() {
+function checkForEndgame(){
     var p1score = parseInt(document.getElementsByClassName('player-1-score')[0].innerHTML);
     var p2score = parseInt(document.getElementsByClassName('player-2-score')[0].innerHTML);
     if (p1score > 24 || p2score > 24 || (p1score ===24 && p2score ===24)) {
         isFirstGame = false;
-        GameStateButtonText = "New game";
+        GameStateButtonText = "Restart game";
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
         document.getElementsByClassName("valid-turn-text")[0].innerHTML = "";
         document.getElementsByClassName("players-turn")[0].innerHTML = "";
         showWinner();
+    }
+}
+
+function checkForNoMoves(){
+    if (parseInt(document.getElementsByClassName("player-1-house-1 seeds")[0].innerHTML) == 0 
+    && parseInt(document.getElementsByClassName("player-1-house-2 seeds")[0].innerHTML) == 0 
+    && parseInt(document.getElementsByClassName("player-1-house-3 seeds")[0].innerHTML) == 0 
+    && parseInt(document.getElementsByClassName("player-1-house-4 seeds")[0].innerHTML) == 0 
+    && parseInt(document.getElementsByClassName("player-1-house-5 seeds")[0].innerHTML) == 0 
+    && parseInt(document.getElementsByClassName("player-1-house-6 seeds")[0].innerHTML) == 0){
+        document.getElementsByClassName(`player-2-score`)[0].innerHTML = parseInt(document.getElementsByClassName(`player-2-score`)[0].innerHTML) 
+        + parseInt(document.getElementsByClassName("player-2-house-1 seeds")[0].innerHTML) 
+        + parseInt(document.getElementsByClassName("player-2-house-2 seeds")[0].innerHTML) 
+        + parseInt(document.getElementsByClassName("player-2-house-3 seeds")[0].innerHTML)
+        + parseInt(document.getElementsByClassName("player-2-house-4 seeds")[0].innerHTML)
+        + parseInt(document.getElementsByClassName("player-2-house-5 seeds")[0].innerHTML)
+        + parseInt(document.getElementsByClassName("player-2-house-6 seeds")[0].innerHTML);
+    }
+    else if(parseInt(document.getElementsByClassName("player-2-house-1 seeds")[0].innerHTML) == 0 
+    && parseInt(document.getElementsByClassName("player-2-house-2 seeds")[0].innerHTML) == 0 
+    && parseInt(document.getElementsByClassName("player-2-house-3 seeds")[0].innerHTML) == 0 
+    && parseInt(document.getElementsByClassName("player-2-house-4 seeds")[0].innerHTML) == 0 
+    && parseInt(document.getElementsByClassName("player-2-house-5 seeds")[0].innerHTML) == 0 
+    && parseInt(document.getElementsByClassName("player-2-house-6 seeds")[0].innerHTML) == 0){
+        document.getElementsByClassName(`player-1-score`)[0].innerHTML = parseInt(document.getElementsByClassName(`player-1-score`)[0].innerHTML) 
+        + parseInt(document.getElementsByClassName("player-1-house-1 seeds")[0].innerHTML) 
+        + parseInt(document.getElementsByClassName("player-1-house-2 seeds")[0].innerHTML) 
+        + parseInt(document.getElementsByClassName("player-1-house-3 seeds")[0].innerHTML)
+        + parseInt(document.getElementsByClassName("player-1-house-4 seeds")[0].innerHTML)
+        + parseInt(document.getElementsByClassName("player-1-house-5 seeds")[0].innerHTML)
+        + parseInt(document.getElementsByClassName("player-1-house-6 seeds")[0].innerHTML);
     }
 }
 
@@ -181,7 +233,7 @@ function startTimer(){
             TimeOut();
         }
         if (ChangeGo) {
-            sec = 29
+            sec = 29;
             ChangeGo = false;
             clearInterval(timer);
             TimeOut();
