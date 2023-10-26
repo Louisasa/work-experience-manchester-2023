@@ -33,4 +33,13 @@ export function makeAMove(playerNumber, houseNumber) {
         houseIndex++;
     }
     FirstTime=true;
+
+    if (houseIndex-1 == 7) {
+        return false
+    }
+    else {
+        return true
+    }
+
 }
+
