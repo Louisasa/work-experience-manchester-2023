@@ -133,7 +133,6 @@ function changePlayer() {
         playersTurn = 1;
     }
 
-}
 
 function makeAMove(playerNumber, houseNumber) {
     if (version == OwareVersionName) {
