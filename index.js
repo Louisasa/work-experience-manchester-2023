@@ -112,7 +112,7 @@ function onHouseClick(player, playersHouseClicked) {
 function changePlayer() {
     if (playersTurn == 1) {
         if (TimeRanOut){
-            document.getElementsByClassName("players-turn")[0].innerHTML ="Player 2 ran out of time! Next player!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="Player 1 ran out of time! Next player!";
         }
         else{
             document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 2's Turn!";
@@ -136,7 +136,7 @@ function changePlayer() {
     }
     else {
         if (TimeRanOut){
-            document.getElementsByClassName("players-turn")[0].innerHTML ="Player 1 ran out of time! Next player!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="Player 2 ran out of time! Next player!";
         }
         else{
             document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1`'s Turn!";
