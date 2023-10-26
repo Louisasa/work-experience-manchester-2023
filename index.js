@@ -146,24 +146,6 @@ function checkForEndgame() {
     }
 }
 
-function capture(numberOfSeeds, player){
-    var currentScore = parseInt(document.getElementsByClassName(`player-${player}-score`)[0].innerHTML);
-    document.getElementsByClassName(`player-${player}-score`)[0].innerHTML = currentScore+numberOfSeeds;
-}
-
-function capture_till(StartHouse, player){
-    var CurrentHouse = StartHouse;
-    var CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
-    while ((CurrentHouse_Seed_Count == 2 || CurrentHouse_Seed_Count == 3) && CurrentHouse > 0){
-        document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML = 0;
-        // capture the seeds
-        capture(CurrentHouse_Seed_Count,player);
-        // change current house to the previous house in order of sowing seeds
-        CurrentHouse-= 1;
-        CurrentHouse_Seed_Count = parseInt(document.getElementsByClassName(`player-${player}-house-${CurrentHouse} seeds`)[0].innerHTML);
-    }
-}
-
 function TimeOut(){
     sec = 29;
     startTimer();
