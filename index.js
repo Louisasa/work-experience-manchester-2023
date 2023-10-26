@@ -156,7 +156,7 @@ function changePlayer() {
 function makeAMove(playerNumber, houseNumber) {
     var toChangePlayer = true;
     if (version == OwareVersionName) {
-        toChangePlayer = OwareMakeAMove(playerNumber, houseNumber);
+        OwareMakeAMove(playerNumber, houseNumber);
     } else if (version == KalahVersionName) {
         toChangePlayer = KalahMakeAMove(playerNumber, houseNumber);
     }
