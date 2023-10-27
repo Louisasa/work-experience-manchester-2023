@@ -146,6 +146,18 @@ function checkForEndgame(){
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
         document.getElementsByClassName("valid-turn-text")[0].innerHTML = "";
         document.getElementsByClassName("players-turn")[0].innerHTML = "";
+        document.getElementById("p1h1").onclick=null;
+        document.getElementById("p1h2").onclick=null;
+        document.getElementById("p1h3").onclick=null;
+        document.getElementById("p1h4").onclick=null;
+        document.getElementById("p1h5").onclick=null;
+        document.getElementById("p1h6").onclick=null;
+        document.getElementById("p2h1").onclick=null;
+        document.getElementById("p2h2").onclick=null;
+        document.getElementById("p2h3").onclick=null;
+        document.getElementById("p2h4").onclick=null;
+        document.getElementById("p2h5").onclick=null;
+        document.getElementById("p2h6").onclick=null;
         showWinner();
     }
 }
