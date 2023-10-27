@@ -198,7 +198,12 @@ function TimeOut(){
     startTimer();
 }
 function startTimer(){
-    document.getElementById('GameTimer').innerHTML='You have 00:'+sec;
+    if (sec < 10){
+        document.getElementById('GameTimer').innerHTML='You have 00:0'+sec;
+    }
+    else{
+        document.getElementById('GameTimer').innerHTML='You have 00:'+sec;
+    }
     timer = setInterval(function(){
         sec--;
         if (sec < 10){
