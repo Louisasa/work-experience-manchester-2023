@@ -60,7 +60,7 @@ function showWinner() {
     document.getElementsByClassName("winner")[0].innerHTML = winnerText;
     confetti({
         particleCount: 500,
-        spread: 100,
+        spread: 400,
         origin: {
             x: 0.5,
             y: 0.5
