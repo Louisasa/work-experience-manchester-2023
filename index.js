@@ -33,6 +33,7 @@ function startGame() {
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
     }
     setupGame();
+    clearInterval(timer);
     if (TimerIsOn) {
         sec = initialTimer;
         startTimer();
@@ -157,6 +158,7 @@ function checkForEndgame(){
         document.getElementById("p2h4").onclick=null;
         document.getElementById("p2h5").onclick=null;
         document.getElementById("p2h6").onclick=null;
+        document.getElementById('GameTimer').innerHTML=null;
         clearInterval(timer);
         showWinner();
     }
