@@ -47,30 +47,30 @@ export function makeAMove(playerNumber, houseNumber) {
     }
     else {
         var last_house_sown = houseIndex - 1 ;
-        var current_side = playerNumberToUpdate;
-        var current_player = playerNumber;
-        kalah_capture(last_house_sown,current_side,current_player)
+        if (playerNumberToUpdate === playerNumber) {
+            kalah_capture(last_house_sown, playerNumber)
+        }
         return true;
     }
 
 }
 
-function kalah_capture(last_house,side,player){
+function kalah_capture(last_house, player){
     var opponent_house = Opposite_Map[last_house-1];
     var oppositePlayer = player === 1 ? 2 : 1;
 
-    var captureCount = parseInt(document.getElementsByClassName(`player-${oppositePlayer}-house-${opponent_house} seeds`)[0].innerHTML);
-    var currentSeedCount = parseInt(document.getElementsByClassName(`player-${side}-house-${last_house} seeds`)[0].innerHTML);
+    var oppositePlayerSeeds = parseInt(document.getElementsByClassName(`player-${oppositePlayer}-house-${opponent_house} seeds`)[0].innerHTML);
+    var currentPlayerSeeds = parseInt(document.getElementsByClassName(`player-${player}-house-${last_house} seeds`)[0].innerHTML);
 
-    if (currentSeedCount === 1 && side === player && captureCount > 0){
+    if (currentPlayerSeeds === 1 && oppositePlayerSeeds > 0){
         document.getElementsByClassName(`player-${oppositePlayer}-house-${opponent_house} seeds`)[0].innerHTML = 0;
-        document.getElementsByClassName(`player-${side}-house-${last_house} seeds`)[0].innerHTML = 0;
+        document.getElementsByClassName(`player-${player}-house-${last_house} seeds`)[0].innerHTML = 0;
 
         setnumberofseeds(0, last_house, player);
         setnumberofseeds(0, opponent_house, oppositePlayer);
         
         var currentScore = parseInt(document.getElementsByClassName(`player-${player}-score`)[0].innerHTML);
         
-        document.getElementsByClassName(`player-${player}-score`)[0].innerHTML = (currentScore + captureCount);
+        document.getElementsByClassName(`player-${player}-score`)[0].innerHTML = (currentScore + oppositePlayerSeeds + currentPlayerSeeds);
     }
 }
