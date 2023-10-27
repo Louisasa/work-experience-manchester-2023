@@ -33,6 +33,7 @@ function startGame() {
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
     }
     setupGame();
+    clearInterval(timer);
     if (TimerIsOn) {
         sec = initialTimer;
         startTimer();
@@ -103,7 +104,7 @@ function changePlayer() {
             document.getElementsByClassName("players-turn")[0].innerHTML ="Player 2 ran out of time! Next player!";
         }
         else{
-            document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1`'s Turn!";
+            document.getElementsByClassName("players-turn")[0].innerHTML ="It's Player 1's Turn!";
         }
         if (TimeRanOut===false){
             ChangeGo=true;
