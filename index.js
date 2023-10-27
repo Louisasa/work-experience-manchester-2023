@@ -33,7 +33,6 @@ function startGame() {
         document.getElementsByClassName("game-state")[0].innerHTML = GameStateButtonText;
     }
     setupGame();
-    clearInterval(timer);
     if (TimerIsOn) {
         sec = initialTimer;
         startTimer();
@@ -158,6 +157,7 @@ function checkForEndgame(){
         document.getElementById("p2h4").onclick=null;
         document.getElementById("p2h5").onclick=null;
         document.getElementById("p2h6").onclick=null;
+        clearInterval(timer);
         showWinner();
     }
 }
@@ -198,7 +198,12 @@ function TimeOut(){
     startTimer();
 }
 function startTimer(){
-    document.getElementById('GameTimer').innerHTML='You have 00:'+sec;
+    if (sec < 10){
+        document.getElementById('GameTimer').innerHTML='You have 00:0'+sec;
+    }
+    else{
+        document.getElementById('GameTimer').innerHTML='You have 00:'+sec;
+    }
     timer = setInterval(function(){
         sec--;
         if (sec < 10){
